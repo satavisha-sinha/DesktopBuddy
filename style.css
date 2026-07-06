@@ -1,16 +1,21 @@
 .character {
-    width : 150px;
-    height: auto;
+    width : 256px;
+    height: 256px;
+    object-fit: none;
+    display: block;
+    image-rendering: pixelated;
+    object-position: 0 0;
 }
+
 .character-container {
     position: fixed;
     bottom: 20px;
     right: -100px;
     display: flex;
     flex-direction: column;
-    animation: walk-in 2.5s ease both;
     z-index: 1000;
 }
+
 .speech-bubble {
     background-color: rgb(242, 221, 238);
     padding: 10px;
@@ -19,36 +24,46 @@
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    transform: translate(-25px,-13px);
-    width: 180;
+    transform: translate(17px,-13px);
+    width: 180px;
 }
+
 .button-container {
     gap: 20px;
     display: flex;
     justify-content: center;
     margin-top: 8px;
 }
+
 .button-container button {
     padding: 8px 15px;
-    transform: translate(-30px,-5px);
+    transform: translate(-5px,-5px);
     border-radius: 10px;
     cursor: pointer;
     font-size: 14px;
     transition: 0.3s;
     box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
+
 .button-container button:hover {
     filter: brightness(1.05);
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     
 
 }
+
 .drink-btn {
     background-color: rgb(197, 218, 235);
 }
+
 .snooze-btn {
     background-color: rgb(241, 248, 224) ;
 }
+
+.walk-in{
+    animation: walk-in 2.5s ease forwards;
+}
+
 @keyframes walk-in {
     from {
         right: -250px;
@@ -57,9 +72,11 @@
         right: 10px;
     }
 }
+
 .walk-out {
     animation: walkOut 2.5s ease forwards;
 }
+
 @keyframes walkOut{
     from{
         right:10px;
@@ -69,6 +86,7 @@
         right:-250px;
     }
 }
+
 .speech-bubble, .button-container {
     opacity: 0;
    transition: opacity 0.5s ease;
