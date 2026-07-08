@@ -1,12 +1,121 @@
+const characterContainer = document.querySelector(".character-container");
 const speechBubble = document.getElementById("speech-bubble");
 const buttonContainer = document.getElementById("button-container");
-
+const girlVideo = document.getElementById("girl-video");
+const girlSprite = document.getElementById("girl-sprite");
 const button1 = document.getElementById("drink-btn");
 const button2 = document.getElementById("snooze-btn");
 
-const girlSprite = document.getElementById("girl-sprite");
+function showFrame(frameNumber){
 
-let currentReminder = REMINDERS.water;
+    girlSprite.style.objectPosition =
+    `-${frameNumber*256}px 0`;
+
+}
+
+function hideSprite(){
+
+    girlSprite.classList.add("hidden");
+
+}
+
+function showSprite(){
+
+    girlSprite.classList.remove("hidden");
+
+}
+
+function hideVideo(){
+
+    girlVideo.classList.add("hidden");
+
+}
+
+function showVideo(){
+
+    girlVideo.classList.remove("hidden");
+
+}
+
+function showUI(){
+
+    speechBubble.style.opacity = "1";
+    buttonContainer.style.opacity = "1";
+
+}
+
+function hideUI(){
+
+    speechBubble.style.opacity = "0";
+    buttonContainer.style.opacity = "0";
+
+}
+
+function walkIn(){
+
+    hideUI();
+    showVideo();
+    hideSprite();
+
+    characterContainer.classList.remove("walk-out");
+    characterContainer.classList.add("walk-in");
+
+    girlVideo.src = "Assets/walking_in.webm";
+
+    girlVideo.load();
+    girlVideo.currentTime = 0;
+    girlVideo.play();
+}
+
+function walkOut(){
+
+    hideUI();
+    hideSprite();
+    showVideo();
+
+    characterContainer.classList.remove("walk-in");
+    characterContainer.classList.add("walk-out");
+
+    girlVideo.src = "Assets/walking_out.webm";
+
+    girlVideo.load();
+    girlVideo.currentTime = 0;
+    girlVideo.playbackRate = 0.7;
+    girlVideo.play();
+
+}
+
+function switchToSprite(){
+
+    girlVideo.pause();
+    hideVideo();
+    showSprite();
+
+}
+
+function switchToVideo(){
+
+    hideSprite();
+    showVideo();
+    girlVideo.currentTime = 0;
+
+}
+
+async function playFrames(sequence,speed){
+
+    for(const frame of sequence){
+
+        showFrame(frame);
+
+        await new Promise(resolve=>setTimeout(resolve,speed));
+
+    }
+
+}
+
+let currentReminder = REMINDERS.sleep;
+
+let reminderFinished;
 
 function loadReminder(reminder){
 
@@ -32,174 +141,105 @@ function loadReminder(reminder){
 
 }
 
-async function showReminder(){
+async function playReminder(reminder){
+
+    console.log("1. playreminder started")
+
+    currentReminder = reminder;
+
+    loadReminder(currentReminder);
+
+    console.log("2. reminder loaded")
 
     walkIn();
 
-    await new Promise(resolve=>setTimeout(resolve,2500));
+    console.log("3. walking in")
+
+    await new Promise(resolve => setTimeout(resolve, 2500));
+
+    console.log("4. finished waiting")
 
     switchToSprite();
 
+    console.log("5. switched to sprite")
+
+    // Hi 👋
     showFrame(0);
+
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    console.log("6. showing idle")
+
+    // Idle 😊
+    showFrame(currentReminder.idleFrame);
 
     showUI();
 
+    console.log("7. UI shown")
+
+    await new Promise(resolve => {
+
+    reminderFinished = resolve;
+
+    });
+
 }
 
-button1.addEventListener("click",async()=>{
+button1.addEventListener("click", async () => {
+
+    speechBubble.innerHTML = "GREAT JOB! 🥳<br>KEEP IT UP!";
+
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
     hideUI();
 
-    await playFrames(currentReminder.animation,350);
+    await playFrames(
+
+        currentReminder.animationFrames,
+
+        currentReminder.frameDuration
+
+    );
 
     walkOut();
 
+    await new Promise(resolve => setTimeout(resolve,2500))
+
+    setBuddyBusy(false);
+
+    processQueue();
+
+    if(reminderFinished){
+
+    reminderFinished();
+
+}
+
+
 });
 
-button2.addEventListener("click",()=>{
+button2.addEventListener("click",async () => {
+
+    speechBubble.innerHTML = "OKAY I'LL BE <br>BACK LATER!";
+
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
     hideUI();
 
     walkOut();
 
+    await new Promise(resolve => setTimeout(resolve,2500))
+
+    setBuddyBusy(false);
+
+    processQueue();
+
+    if(reminderFinished){
+
+    reminderFinished();
+
+}
+
 });
-
-loadReminder(currentReminder);
-
-showReminder();
-
-
-// const drinkButton = document.getElementById("drink-btn");
-// const snoozeButton = document.getElementById("snooze-btn");
-// const speechBubble = document.getElementById("speech-bubble");
-// const buttonContainer = document.getElementById("button-container");
-// const characterContainer = document.querySelector(".character-container");
-// const girl = document.getElementById("girl");
-
-// function showFrame(f) {
-//     girl.style.objectPosition = `-${f * 256}px 0`;
-// }
-
-// // -------------------- WALK IN --------------------
-
-// function walkIn() {
-
-//     speechBubble.style.opacity = "0";
-//     buttonContainer.style.opacity = "0";
-
-//     characterContainer.classList.remove("walk-out");
-//     characterContainer.classList.add("walk-in");
-
-//     const frames = [0, 1];
-//     let i = 0;
-
-//     const walk = setInterval(() => {
-//         showFrame(frames[i % 2]);
-//         i++;
-//     }, 180);
-
-//     setTimeout(() => {
-//         clearInterval(walk);
-//         idle();
-//     }, 2500);
-// }
-
-// // -------------------- IDLE --------------------
-
-// function idle() {
-
-//     showFrame(2);
-
-//     speechBubble.style.opacity = "1";
-//     buttonContainer.style.opacity = "1";
-// }
-
-// // -------------------- DRINK --------------------
-
-// function drinkAnimation() {
-
-//     const sequence = [3, 4, 3, 4, 5, 6];
-//     let i = 0;
-
-//     const drink = setInterval(() => {
-
-//         showFrame(sequence[i]);
-
-//         i++;
-
-//         if (i >= sequence.length) {
-
-//             clearInterval(drink);
-
-//             walkOut();
-
-//         }
-
-//     }, 350);
-
-// }
-
-// // -------------------- WALK OUT --------------------
-
-// function walkOut() {
-
-//     speechBubble.style.opacity = "0";
-//     buttonContainer.style.opacity = "0";
-
-//     characterContainer.classList.remove("walk-in");
-//     characterContainer.classList.add("walk-out");
-
-//     let frames = [7, 0];
-//     let i = 0;
-
-//     const walk = setInterval(() => {
-
-//         showFrame(frames[i % 2]);
-
-//         i++;
-
-//     }, 180);
-
-//     setTimeout(() => {
-
-//         clearInterval(walk);
-
-//         showFrame(7);
-
-//     }, 2500);
-
-// }
-
-// // -------------------- BUTTONS --------------------
-
-// drinkButton.addEventListener("click", () => {
-
-//     speechBubble.innerHTML = "GREAT JOB! 🥳<br>KEEP IT UP!";
-
-//     setTimeout(() => {
-
-//         drinkAnimation();
-
-//     }, 500);
-
-// });
-
-// snoozeButton.addEventListener("click", () => {
-
-//     speechBubble.innerHTML = "OKAY! I'LL BE BACK LATER 😊";
-
-//     showFrame(6);
-
-//     setTimeout(() => {
-
-//         walkOut();
-
-//     }, 1200);
-
-// });
-
-// // -------------------- START --------------------
-
-// walkIn();
 
 

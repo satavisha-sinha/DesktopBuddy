@@ -7,15 +7,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div class="character-container">
+
         <div id="speech-bubble" 
         class="speech-bubble">
             TIME TO DRINK WATER!<br>
             TO STAY HYDRATED💧
         </div>
-        <img id="girl" src="Assets/New Projectcp.png" 
+
+        <video
+        id="girl-video"
+        class="character-video"
+        muted
+        playsinline
+        preload="auto">
+        <source src="Assets/walking_in.webm" type="video/webm">
+        </video>
+
+        <img id="girl-sprite" src="Assets/Water reminder.png" 
         alt="Desktop Buddy" 
-        class="character">
+        class="character hidden">
+
         <div id="button-container"
          class="button-container">
             <button id="drink-btn" 
@@ -23,7 +36,15 @@
             <button id="snooze-btn" 
             class="snooze-btn">⏰ SNOOZE</button>
         </div>
+        
     </div>
-   <script src="script.js"></script>
+    <script src="config.js"></script>
+    <script src="queue.js"></script>
+    <script src="script.js"></script>
+    <script src="scheduler.js"></script>
+
+    <script>
+        startScheduler();
+    </script>
 </body>
 </html>

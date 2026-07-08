@@ -1,5 +1,5 @@
 .character {
-    width : 256px;
+    width: 256px;
     height: 256px;
     object-fit: none;
     display: block;
@@ -7,6 +7,17 @@
     object-position: 0 0;
 }
 
+/* Walking WebM */
+.character-video {
+    width: 256px;
+    height: 256px;
+    display: block;
+    object-fit: contain;
+    transform: scale(1.21);
+    transform-origin: center;
+}
+
+/* Main Container */
 .character-container {
     position: fixed;
     bottom: 20px;
@@ -16,6 +27,7 @@
     z-index: 1000;
 }
 
+/* Speech Bubble */
 .speech-bubble {
     background-color: rgb(242, 221, 238);
     padding: 10px;
@@ -24,20 +36,21 @@
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    transform: translate(17px,-13px);
+    transform: translate(17px, -13px);
     width: 180px;
 }
 
+/* Buttons */
 .button-container {
-    gap: 20px;
     display: flex;
     justify-content: center;
+    gap: 20px;
     margin-top: 8px;
 }
 
 .button-container button {
     padding: 8px 15px;
-    transform: translate(-5px,-5px);
+    transform: translate(-5px, -5px);
     border-radius: 10px;
     cursor: pointer;
     font-size: 14px;
@@ -48,46 +61,54 @@
 .button-container button:hover {
     filter: brightness(1.05);
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    
-
 }
 
+/* Button Colors */
 .drink-btn {
     background-color: rgb(197, 218, 235);
 }
 
 .snooze-btn {
-    background-color: rgb(241, 248, 224) ;
+    background-color: rgb(241, 248, 224);
 }
 
-.walk-in{
-    animation: walk-in 2.5s ease forwards;
+/* Walk In Animation */
+.walk-in {
+    animation: walk-in 2.7s ease forwards;
 }
 
 @keyframes walk-in {
     from {
         right: -250px;
     }
-    to{
+    to {
         right: 10px;
     }
 }
 
+/* Walk Out Animation */
 .walk-out {
-    animation: walkOut 2.5s ease forwards;
+    animation: walkOut 7s ease forwards;
 }
 
-@keyframes walkOut{
-    from{
-        right:10px;
+@keyframes walkOut {
+    from {
+        right: 10px;
     }
-
-    to{
-        right:-250px;
+    to {
+        right: -250px;
     }
 }
 
-.speech-bubble, .button-container {
+/* Fade In / Fade Out */
+.speech-bubble,
+.button-container {
     opacity: 0;
-   transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease;
 }
+
+/* Utility Class - Hide Elements */
+.hidden {
+    display: none !important;
+}
+
