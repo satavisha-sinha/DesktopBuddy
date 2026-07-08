@@ -2,7 +2,6 @@ let waterInterval = null;
 let stretchInterval = null;
 let studyInterval = null;
 let codingInterval = null;
-let motivationInterval = null;
 let complimentInterval = null;
 let sleepInterval = null;
 
@@ -20,23 +19,48 @@ function startScheduler(){
 
     // Stretch
 
+    // stretchInterval = setInterval(() => {
+
+    //     console.log("Stretch Reminder Queued 🤸‍♀️");
+        
+    //     queueReminder(REMINDERS.stretch);
+
     // Study
+
+    // studyInterval = setInterval(() => {
+
+    //     console.log("Study Reminder Queued 🤓");
+        
+    //     queueReminder(REMINDERS.study);
 
     // Coding
 
-    // Motivation
+    // codingInterval = setInterval(() => {
+
+    //     console.log("Coding Reminder Queued 💻");
+        
+    //     queueReminder(REMINDERS.coding);
 
     // Compliment
 
+     complimentInterval = setInterval(() => {
+
+        console.log("Compliment Reminder Queued 💕");
+        
+        queueReminder(REMINDERS.compliment);
+
+    },20000);
+
+
     // Sleep
 
-    sleepInterval = setInterval(() => {
+    // sleepInterval = setInterval(() => {
 
-        console.log("Sleep Reminder Queued 😴");
+    //     console.log("Sleep Reminder Queued 😴");
         
-        queueReminder(REMINDERS.sleep);
+    //     queueReminder(REMINDERS.sleep);
     
-    },10000);
+    // },20000);
 
 }
 

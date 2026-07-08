@@ -113,7 +113,7 @@ async function playFrames(sequence,speed){
 
 }
 
-let currentReminder = REMINDERS.sleep;
+let currentReminder = REMINDERS.compliment;
 
 let reminderFinished;
 
@@ -175,13 +175,38 @@ async function playReminder(reminder){
 
     showUI();
 
-    console.log("7. UI shown")
+    if(
+        currentReminder === REMINDERS.compliment ){
 
-    await new Promise(resolve => {
+        const endTime = Date.now() + (currentReminder.displayTime || 3000);
 
-    reminderFinished = resolve;
+        while (Date.now() < endTime) {
 
-    });
+            showFrame(2); // Smile
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            showFrame(1); // Blink
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            showFrame(2); // Smile
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            showFrame(3); // Wave
+            await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+
+        hideUI();
+
+        walkOut();
+
+        await new Promise(resolve => setTimeout(resolve,2500));
+
+        setBuddyBusy(false);
+
+        processQueue();
+
+        return;
+    }
 
 }
 
