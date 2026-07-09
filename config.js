@@ -55,7 +55,7 @@ const REMINDERS = {
         showButtons: true
     },
 
-    compliment: {
+    encouragement: {
         sprite: "Assets/Compliments.png",
         message: "I'M PROUD OF YOU! 💖",
         idleFrame: 2,

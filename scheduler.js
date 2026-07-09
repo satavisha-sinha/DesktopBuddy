@@ -2,10 +2,18 @@ let waterInterval = null;
 let stretchInterval = null;
 let studyInterval = null;
 let codingInterval = null;
-let complimentInterval = null;
+let encouragementInterval = null;
 let sleepInterval = null;
 
 function startScheduler(){
+
+    setTimeout(() => {
+
+        console.log("Water Reminder Queued 💧");
+
+        queueReminder(REMINDERS.water);
+
+    }, 5000);
 
     // Water
 
@@ -19,48 +27,54 @@ function startScheduler(){
 
     // Stretch
 
-    // stretchInterval = setInterval(() => {
+    stretchInterval = setInterval(() => {
 
-    //     console.log("Stretch Reminder Queued 🤸‍♀️");
+        console.log("Stretch Reminder Queued 🤸‍♀️");
         
-    //     queueReminder(REMINDERS.stretch);
+        queueReminder(REMINDERS.stretch);
+
+     },20000);
 
     // Study
 
-    // studyInterval = setInterval(() => {
+    studyInterval = setInterval(() => {
 
-    //     console.log("Study Reminder Queued 🤓");
+        console.log("Study Reminder Queued 🤓");
         
-    //     queueReminder(REMINDERS.study);
+        queueReminder(REMINDERS.study);
+
+     },20000);
 
     // Coding
 
-    // codingInterval = setInterval(() => {
+    codingInterval = setInterval(() => {
 
-    //     console.log("Coding Reminder Queued 💻");
+        console.log("Coding Reminder Queued 💻");
         
-    //     queueReminder(REMINDERS.coding);
+        queueReminder(REMINDERS.coding);
 
-    // Compliment
+     },20000);
 
-     complimentInterval = setInterval(() => {
+    // Encouragement
 
-        console.log("Compliment Reminder Queued 💕");
+     encouragementInterval = setInterval(() => {
+
+        console.log("Encouragement Reminder Queued 💕");
         
-        queueReminder(REMINDERS.compliment);
+        queueReminder(REMINDERS.encouragement);
 
     },20000);
 
 
     // Sleep
 
-    // sleepInterval = setInterval(() => {
+    sleepInterval = setInterval(() => {
 
-    //     console.log("Sleep Reminder Queued 😴");
+        console.log("Sleep Reminder Queued 😴");
         
-    //     queueReminder(REMINDERS.sleep);
+        queueReminder(REMINDERS.sleep);
     
-    // },20000);
+    },20000);
 
 }
 
@@ -70,8 +84,7 @@ function stopScheduler(){
     clearInterval(stretchInterval);
     clearInterval(studyInterval);
     clearInterval(codingInterval);
-    clearInterval(motivationInterval);
-    clearInterval(complimentInterval);
+    clearInterval(encouragementInterval);
 
     // clearTimeout(sleepTimeout);
 

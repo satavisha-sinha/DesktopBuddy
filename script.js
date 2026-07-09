@@ -113,7 +113,7 @@ async function playFrames(sequence,speed){
 
 }
 
-let currentReminder = REMINDERS.compliment;
+let currentReminder = REMINDERS.water;
 
 let reminderFinished;
 
@@ -176,7 +176,7 @@ async function playReminder(reminder){
     showUI();
 
     if(
-        currentReminder === REMINDERS.compliment ){
+        currentReminder === REMINDERS.encouragement ){
 
         const endTime = Date.now() + (currentReminder.displayTime || 3000);
 
