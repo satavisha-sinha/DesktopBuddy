@@ -1,6 +1,7 @@
 const REMINDERS = {
 
     water: {
+        priority:2,
         sprite: "Assets/Water reminder.png",
         message: "TIME TO DRINK WATER! 💧<br>STAY HYDRATED!",
         button1: "🥤 DRANK",
@@ -12,6 +13,7 @@ const REMINDERS = {
     },
 
     sleep: {
+        priority:1,
         sprite: "Assets/Sleep reminder.png",
         message: "IT'S GETTING LATE 🌙<br>TIME TO SLEEP!",
         button1: "😴 I'M OFF",
@@ -23,6 +25,7 @@ const REMINDERS = {
     },
 
     study: {
+        priority:5,
         sprite: "Assets/Study reminder.png",
         message: "LET'S STUDY FOR A WHILE 📚",
         button1: "📚 DOING",
@@ -34,6 +37,7 @@ const REMINDERS = {
     },
 
     coding: {
+        priority:4,
         sprite: "Assets/Coding reminder.png",
         message: "TIME TO BUILD SOMETHING AWESOME 💻",
         button1: "💻 CATCHING",
@@ -45,6 +49,7 @@ const REMINDERS = {
     },
 
     stretch: {
+        priority:3,
         sprite: "Assets/Stretch reminder2.png",
         message: "TIME TO RELAX! 🤸<br>STRETCH YOUR BODY!",
         button1: "😊 ALL SET",
@@ -56,6 +61,7 @@ const REMINDERS = {
     },
 
     encouragement: {
+        priority:6,
         sprite: "Assets/Compliments.png",
         message: "I'M PROUD OF YOU! 💖",
         idleFrame: 2,

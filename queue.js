@@ -6,6 +6,9 @@ function queueReminder(reminder){
 
     reminderQueue.push(reminder);
 
+    // Sort by priority
+    reminderQueue.sort((a,b)=>a.priority-b.priority);
+
     processQueue();
 
 }
