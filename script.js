@@ -199,11 +199,15 @@ async function playReminder(reminder){
 
         walkOut();
 
-        await new Promise(resolve => setTimeout(resolve,2500));
+        await new Promise(resolve => setTimeout(resolve, 2500));
 
-        setBuddyBusy(false);
+        setTimeout(() => {
+            
+            setBuddyBusy(false);
 
-        processQueue();
+            processQueue();
+
+        }, QUEUE_COOLDOWN);
 
         return;
     }

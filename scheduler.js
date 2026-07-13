@@ -63,16 +63,62 @@ const WEEK_SCHEDULE = {
 
 let waterInterval = null;
 let stretchInterval = null;
-let studyInterval = null;
-let codingInterval = null;
 let encouragementInterval = null;
+let dailyTimers = {
+    study: {},
+    coding: {},
+    sleep: {}
+};
 
-let sleepTimeout = null;
-let sleepInterval = null;
+
+function scheduleDailyReminder(name, hour, minute, reminder) {
+
+    const now = new Date();
+
+    const nextReminder = new Date();
+
+    nextReminder.setHours(hour, minute, 0, 0);
+
+    if (nextReminder <= now) {
+
+        nextReminder.setDate(nextReminder.getDate() + 1);
+
+    }
+
+    const delay = nextReminder - now;
+
+    console.log(
+        `${reminder.message} scheduled for`,
+        nextReminder.toLocaleString()
+    );
+
+    const timeout = setTimeout(() => {
+
+        console.log(`${reminder.message} Queued`);
+
+        queueReminder(reminder);
+
+        const interval = setInterval(() => {
+
+            console.log(`${reminder.message} Queued`);
+
+            queueReminder(reminder);
+
+        }, 24 * 60 * 60 * 1000);
+
+        dailyTimers[name].interval = interval;
+
+    }, delay);
+
+    dailyTimers[name].timeout = timeout;
+
+}
 
 // Start Scheduler
 
 function startScheduler() {
+
+// Interval based reminders
 
     // Water Reminder
 
@@ -128,100 +174,35 @@ function startScheduler() {
 
     }, ENCOURAGEMENT_INTERVAL);
 
-    // Sleep Reminder
-    
-    scheduleSleepReminder();
+// Time based remiders
 
-}
+    const today = WEEK_SCHEDULE[new Date().getDay()];
 
-// // Study Mode
-
-// function startStudyReminder() {
-
-//     if (studyInterval) return;
-
-//     studyInterval = setInterval(() => {
-
-//         console.log("Study Reminder Queued 📚");
-
-//         queueReminder(REMINDERS.study);
-
-//     }, STUDY_INTERVAL);
-
-// }
-
-// function stopStudyReminder() {
-
-//     clearInterval(studyInterval);
-
-//     studyInterval = null;
-
-// }
-
-// // Coding Mode
-
-// function startCodingReminder() {
-
-//     if (codingInterval) return;
-
-//     codingInterval = setInterval(() => {
-
-//         console.log("Coding Reminder Queued 💻");
-
-//         queueReminder(REMINDERS.coding);
-
-//     }, CODING_INTERVAL);
-
-// }
-
-// function stopCodingReminder() {
-
-//     clearInterval(codingInterval);
-
-//     codingInterval = null;
-
-// }
-
-// Sleep Scheduler
-
-function scheduleSleepReminder() {
-
-    const now = new Date();
-
-    const nextSleep = new Date();
-
-    nextSleep.setHours(0, 30, 0, 0); // 12:30 AM
-
-    if (nextSleep <= now) {
-
-        nextSleep.setDate(nextSleep.getDate() + 1);
-
-    }
-
-    const delay = nextSleep - now;
-
-    console.log(
-        "Next Sleep Reminder:",
-        nextSleep.toLocaleString()
+    // Study
+    scheduleDailyReminder(
+        "study",
+        today.study.hour,
+        today.study.minute,
+        REMINDERS.study
     );
 
-    sleepTimeout = setTimeout(() => {
+    // Coding
+    scheduleDailyReminder(
+        "coding",
+        today.coding.hour,
+        today.coding.minute,
+        REMINDERS.coding
+    );
 
-        console.log("Sleep Reminder Queued 😴");
-
-        queueReminder(REMINDERS.sleep);
-
-        sleepInterval = setInterval(() => {
-
-            console.log("Sleep Reminder Queued 😴");
-
-            queueReminder(REMINDERS.sleep);
-
-        }, 24 * 60 * 60 * 1000);
-
-    }, delay);
-
+    // Sleep
+    scheduleDailyReminder(
+        "sleep",
+        0,
+        30,
+        REMINDERS.sleep
+    );
 }
+
 
 // Stop Scheduler
 
@@ -230,12 +211,15 @@ function stopScheduler() {
     clearInterval(waterInterval);
     clearInterval(stretchInterval);
     clearInterval(encouragementInterval);
+    
+    clearTimeout(dailyTimers.study.timeout);
+    clearInterval(dailyTimers.study.interval);
 
-    clearInterval(studyInterval);
-    clearInterval(codingInterval);
+    clearTimeout(dailyTimers.coding.timeout);
+    clearInterval(dailyTimers.coding.interval);
 
-    clearInterval(sleepInterval);
-    clearTimeout(sleepTimeout);
+    clearTimeout(dailyTimers.sleep.timeout);
+    clearInterval(dailyTimers.sleep.interval);
 
 }
 
