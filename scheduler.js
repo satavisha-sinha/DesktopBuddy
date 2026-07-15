@@ -12,9 +12,6 @@ const ENCOURAGEMENT_FIRST_DELAY = 1 * 60 * 60 * 1000;     // 1 hr
 const ENCOURAGEMENT_INTERVAL = 1 * 60 * 60 * 1000;        // 1 hr
 
 
-const STUDY_INTERVAL = 60 * 60 * 1000;             // 1 hr
-const CODING_INTERVAL = 60 * 60 * 1000;            // 1 hr
-
 const WEEK_SCHEDULE = {
 
     // Sunday
@@ -64,6 +61,9 @@ const WEEK_SCHEDULE = {
 let waterInterval = null;
 let stretchInterval = null;
 let encouragementInterval = null;
+let waterTimeout = null;
+let stretchTimeout = null;
+let encouragementTimeout = null;
 let dailyTimers = {
     study: {},
     coding: {},
@@ -114,15 +114,9 @@ function scheduleDailyReminder(name, hour, minute, reminder) {
 
 }
 
-// Start Scheduler
+function startWaterSchedule(firstDelay) {
 
-function startScheduler() {
-
-// Interval based reminders
-
-    // Water Reminder
-
-    setTimeout(() => {
+    waterTimeout = setTimeout(() => {
 
         console.log("Water Reminder Queued 💧");
 
@@ -136,11 +130,13 @@ function startScheduler() {
 
         }, WATER_INTERVAL);
 
-    }, WATER_INTERVAL);
+    }, firstDelay);
 
-    // Stretch Reminder
+}
 
-    setTimeout(() => {
+function startStretchSchedule(firstDelay) {
+
+    stretchTimeout = setTimeout(() => {
 
         console.log("Stretch Reminder Queued 🤸");
 
@@ -154,11 +150,13 @@ function startScheduler() {
 
         }, STRETCH_INTERVAL);
 
-    }, STRETCH_INTERVAL);
+    }, firstDelay);
 
-    // Encouragement Reminder
-    
-    setTimeout(() => {
+}
+
+function startEncouragementSchedule(firstDelay) {
+
+    encouragementTimeout = setTimeout(() => {
 
         console.log("Encouragement Reminder Queued 🌸");
 
@@ -172,7 +170,22 @@ function startScheduler() {
 
         }, ENCOURAGEMENT_INTERVAL);
 
-    }, ENCOURAGEMENT_INTERVAL);
+    }, firstDelay);
+
+}
+
+// Start Scheduler
+
+function startScheduler() {
+
+// Interval based reminders
+
+    startWaterSchedule(WATER_FIRST_DELAY);
+
+    startStretchSchedule(STRETCH_FIRST_DELAY);
+
+    startEncouragementSchedule(ENCOURAGEMENT_FIRST_DELAY);
+
 
 // Time based remiders
 
@@ -208,10 +221,16 @@ function startScheduler() {
 
 function stopScheduler() {
 
+    clearTimeout(waterTimeout);
     clearInterval(waterInterval);
+
+    clearTimeout(stretchTimeout);
     clearInterval(stretchInterval);
+
+    clearTimeout(encouragementTimeout);
     clearInterval(encouragementInterval);
     
+
     clearTimeout(dailyTimers.study.timeout);
     clearInterval(dailyTimers.study.interval);
 

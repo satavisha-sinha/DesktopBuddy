@@ -1,5 +1,5 @@
 const QUEUE_COOLDOWN = 60 * 1000; // 1 minute
-const QUEUE_COOLDOWN = 5000; // 5 seconds
+// const QUEUE_COOLDOWN = 5000; // 5 seconds
 
 let reminderQueue = [];
 

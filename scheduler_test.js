@@ -1,100 +1,238 @@
+// Interval Reminders
+
+const WATER_FIRST_DELAY = 5000;            // 5 sec
+const WATER_INTERVAL = 20000;              // 20 sec
+
+const STRETCH_FIRST_DELAY = 10000;         // 10 sec
+const STRETCH_INTERVAL = 30000;            // 30 sec
+
+const ENCOURAGEMENT_FIRST_DELAY = 15000;   // 15 sec
+const ENCOURAGEMENT_INTERVAL = 45000;      // 45 sec
+
+// Time Based Schedule
+const WEEK_SCHEDULE = {
+
+    0: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
+    1: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
+    2: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
+    3: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
+    4: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
+    5: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
+    6: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } }
+
+};
+
 let waterInterval = null;
 let stretchInterval = null;
-let studyInterval = null;
-let codingInterval = null;
 let encouragementInterval = null;
-let sleepInterval = null;
 
-function startScheduler(){
+// ----------------------------
 
-    setTimeout(() => {
-
-        console.log("Water Reminder Queued 💧");
-
-        queueReminder(REMINDERS.water);
-
-    }, 5000);
+function startScheduler() {
 
     // Water
 
-    // waterInterval = setInterval(() => {
+    setTimeout(() => {
 
-    //     console.log("Water Reminder Queued 💧");
-        
-    //     queueReminder(REMINDERS.water);
-    
-    // },10000);
+        console.log("💧 Water");
+
+        queueReminder(REMINDERS.water);
+
+        waterInterval = setInterval(() => {
+
+            console.log("💧 Water");
+
+            queueReminder(REMINDERS.water);
+
+        }, WATER_INTERVAL);
+
+    }, WATER_FIRST_DELAY);
 
     // Stretch
 
-    stretchInterval = setInterval(() => {
+    setTimeout(() => {
 
-        console.log("Stretch Reminder Queued 🤸‍♀️");
-        
+        console.log("🤸 Stretch");
+
         queueReminder(REMINDERS.stretch);
 
-     },20000);
+        stretchInterval = setInterval(() => {
 
-    // Study
+            console.log("🤸 Stretch");
 
-    studyInterval = setInterval(() => {
+            queueReminder(REMINDERS.stretch);
 
-        console.log("Study Reminder Queued 🤓");
-        
-        queueReminder(REMINDERS.study);
+        }, STRETCH_INTERVAL);
 
-     },20000);
-
-    // Coding
-
-    codingInterval = setInterval(() => {
-
-        console.log("Coding Reminder Queued 💻");
-        
-        queueReminder(REMINDERS.coding);
-
-     },20000);
+    }, STRETCH_FIRST_DELAY);
 
     // Encouragement
 
-     encouragementInterval = setInterval(() => {
+    setTimeout(() => {
 
-        console.log("Encouragement Reminder Queued 💕");
-        
+        console.log("🌸 Encouragement");
+
         queueReminder(REMINDERS.encouragement);
 
-    },20000);
+        encouragementInterval = setInterval(() => {
 
+            console.log("🌸 Encouragement");
 
-    // Sleep
+            queueReminder(REMINDERS.encouragement);
 
-    sleepInterval = setInterval(() => {
+        }, ENCOURAGEMENT_INTERVAL);
 
-        console.log("Sleep Reminder Queued 😴");
-        
+    }, ENCOURAGEMENT_FIRST_DELAY);
+
+    // Study (5 sec)
+
+    setTimeout(() => {
+
+        console.log("📚 Study");
+
+        queueReminder(REMINDERS.study);
+
+    }, 5000);
+
+    // Coding (10 sec)
+
+    setTimeout(() => {
+
+        console.log("💻 Coding");
+
+        queueReminder(REMINDERS.coding);
+
+    }, 10000);
+
+    // Sleep (15 sec)
+
+    setTimeout(() => {
+
+        console.log("😴 Sleep");
+
         queueReminder(REMINDERS.sleep);
-    
-    },20000);
+
+    }, 15000);
 
 }
 
-function stopScheduler(){
+function stopScheduler() {
 
     clearInterval(waterInterval);
     clearInterval(stretchInterval);
-    clearInterval(studyInterval);
-    clearInterval(codingInterval);
     clearInterval(encouragementInterval);
-
-    // clearTimeout(sleepTimeout);
 
 }
 
-function restartScheduler(){
+function restartScheduler() {
 
     stopScheduler();
 
     startScheduler();
 
-
 }
+
+
+
+
+
+// let waterInterval = null;
+// let stretchInterval = null;
+// let studyInterval = null;
+// let codingInterval = null;
+// let encouragementInterval = null;
+// let sleepInterval = null;
+
+// function startScheduler(){
+
+//     setTimeout(() => {
+
+//         console.log("Water Reminder Queued 💧");
+
+//         queueReminder(REMINDERS.water);
+
+//     }, 5000);
+
+//     // Water
+
+//     // waterInterval = setInterval(() => {
+
+//     //     console.log("Water Reminder Queued 💧");
+        
+//     //     queueReminder(REMINDERS.water);
+    
+//     // },10000);
+
+//     // Stretch
+
+//     stretchInterval = setInterval(() => {
+
+//         console.log("Stretch Reminder Queued 🤸‍♀️");
+        
+//         queueReminder(REMINDERS.stretch);
+
+//      },20000);
+
+//     // Study
+
+//     studyInterval = setInterval(() => {
+
+//         console.log("Study Reminder Queued 🤓");
+        
+//         queueReminder(REMINDERS.study);
+
+//      },20000);
+
+//     // Coding
+
+//     codingInterval = setInterval(() => {
+
+//         console.log("Coding Reminder Queued 💻");
+        
+//         queueReminder(REMINDERS.coding);
+
+//      },20000);
+
+//     // Encouragement
+
+//      encouragementInterval = setInterval(() => {
+
+//         console.log("Encouragement Reminder Queued 💕");
+        
+//         queueReminder(REMINDERS.encouragement);
+
+//     },20000);
+
+
+//     // Sleep
+
+//     sleepInterval = setInterval(() => {
+
+//         console.log("Sleep Reminder Queued 😴");
+        
+//         queueReminder(REMINDERS.sleep);
+    
+//     },20000);
+
+// }
+
+// function stopScheduler(){
+
+//     clearInterval(waterInterval);
+//     clearInterval(stretchInterval);
+//     clearInterval(studyInterval);
+//     clearInterval(codingInterval);
+//     clearInterval(encouragementInterval);
+
+//     // clearTimeout(sleepTimeout);
+
+// }
+
+// function restartScheduler(){
+
+//     stopScheduler();
+
+//     startScheduler();
+
+
+// }

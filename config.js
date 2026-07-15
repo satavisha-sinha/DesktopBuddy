@@ -9,7 +9,8 @@ const REMINDERS = {
         idleFrame: 1,
         animationFrames: [2,3,2,3,4,5,5],
         frameDuration:350,
-        showButtons: true
+        showButtons: true,
+        snooze: 5 * 60 * 1000
     },
 
     sleep: {
@@ -21,7 +22,8 @@ const REMINDERS = {
         idleFrame: 1,
         animationFrames: [2,2,2,3,3],
         frameDuration:350,
-        showButtons: true
+        showButtons: true,
+        snooze: 10 * 60 * 1000
     },
 
     study: {
@@ -33,7 +35,8 @@ const REMINDERS = {
         idleFrame: 1,
         animationFrames: [2,2,3,2,3,3,4,4],
         frameDuration:350,
-        showButtons: true
+        showButtons: true,
+        snooze: 45 * 60 * 1000
     },
 
     coding: {
@@ -45,7 +48,8 @@ const REMINDERS = {
         idleFrame: 1,
         animationFrames: [2,3,3,2,3,4,4],
         frameDuration:350,
-        showButtons: true
+        showButtons: true,
+        snooze: 45 * 60 * 1000
     },
 
     stretch: {
@@ -57,7 +61,8 @@ const REMINDERS = {
         idleFrame: 1,
         animationFrames: [2,3,4,3,5,6,6],
         frameDuration:350,
-        showButtons: true
+        showButtons: true,
+        snooze: 30 * 60 * 1000
     },
 
     encouragement: {

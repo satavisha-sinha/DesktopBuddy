@@ -115,7 +115,19 @@ async function playFrames(sequence,speed){
 
 let currentReminder = REMINDERS.water;
 
-let reminderFinished;
+function snoozeReminder(reminder){
+
+    console.log(
+        `${reminder.message} snoozed for ${reminder.snooze / 60000} minutes`
+    );
+
+    setTimeout(() => {
+
+        queueReminder(reminder);
+
+    }, reminder.snooze);
+
+}
 
 function loadReminder(reminder){
 
@@ -238,13 +250,6 @@ button1.addEventListener("click", async () => {
 
     processQueue();
 
-    if(reminderFinished){
-
-    reminderFinished();
-
-}
-
-
 });
 
 button2.addEventListener("click",async () => {
@@ -259,15 +264,40 @@ button2.addEventListener("click",async () => {
 
     await new Promise(resolve => setTimeout(resolve,2500))
 
+    switch(currentReminder){
+
+    case REMINDERS.water:
+
+        clearTimeout(waterTimeout);
+        clearInterval(waterInterval);
+
+        startWaterSchedule(currentReminder.snooze);
+
+        break;
+
+    case REMINDERS.stretch:
+
+        clearTimeout(stretchTimeout);
+        clearInterval(stretchInterval);
+
+        startStretchSchedule(currentReminder.snooze);
+
+        break;
+
+    case REMINDERS.encouragement:
+
+        clearTimeout(encouragementTimeout);
+        clearInterval(encouragementInterval);
+
+        startEncouragementSchedule(currentReminder.snooze);
+
+        break;
+
+    }
+
     setBuddyBusy(false);
 
     processQueue();
-
-    if(reminderFinished){
-
-    reminderFinished();
-
-}
 
 });
 
