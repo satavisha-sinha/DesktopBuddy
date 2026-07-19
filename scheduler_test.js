@@ -25,6 +25,9 @@ const WEEK_SCHEDULE = {
 let waterInterval = null;
 let stretchInterval = null;
 let encouragementInterval = null;
+let waterTimeout = null;
+let stretchTimeout = null;
+let encouragementTimeout = null;
 
 // ----------------------------
 
