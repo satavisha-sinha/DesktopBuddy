@@ -1,31 +1,31 @@
-// const QUEUE_COOLDOWN = 60 * 1000; // 1 minute
-// // const QUEUE_COOLDOWN = 5000; // 5 seconds
+const QUEUE_COOLDOWN = 60 * 1000; // 1 minute
+// const QUEUE_COOLDOWN = 5000; // 5 seconds
 
-// let reminderQueue = [];
+let reminderQueue = [];
 
-// let buddyBusy = false;
+let buddyBusy = false;
 
-// function queueReminder(reminder){
+function queueReminder(reminder){
 
-//     // Don't add if this reminder is already waiting
-//     if (reminderQueue.includes(reminder)) {
-//         console.log(`${reminder.message} is already in the queue.`);
-//         return;
-//     }
+    // Don't add if this reminder is already waiting
+    if (reminderQueue.includes(reminder)) {
+        console.log(`${reminder.message} is already in the queue.`);
+        return;
+    }
 
-//     reminderQueue.push(reminder);
+    reminderQueue.push(reminder);
 
-//     reminderQueue.sort((a, b) => a.priority - b.priority);
+    reminderQueue.sort((a, b) => a.priority - b.priority);
 
-//     processQueue();
+    processQueue();
 
-// }
+}
 
-// function getNextReminder(){
+function getNextReminder(){
 
-//     return reminderQueue.shift();
+    return reminderQueue.shift();
 
-// }
+}
 
 function isBuddyBusy(){
 
