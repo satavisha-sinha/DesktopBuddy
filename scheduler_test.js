@@ -1,26 +1,26 @@
-// Interval Reminders
+// // Interval Reminders
 
-const WATER_FIRST_DELAY = 5000;            // 5 sec
-const WATER_INTERVAL = 20000;              // 20 sec
+// const WATER_FIRST_DELAY = 5000;            // 5 sec
+// const WATER_INTERVAL = 20000;              // 20 sec
 
-const STRETCH_FIRST_DELAY = 10000;         // 10 sec
-const STRETCH_INTERVAL = 30000;            // 30 sec
+// const STRETCH_FIRST_DELAY = 10000;         // 10 sec
+// const STRETCH_INTERVAL = 30000;            // 30 sec
 
-const ENCOURAGEMENT_FIRST_DELAY = 15000;   // 15 sec
-const ENCOURAGEMENT_INTERVAL = 45000;      // 45 sec
+// const ENCOURAGEMENT_FIRST_DELAY = 15000;   // 15 sec
+// const ENCOURAGEMENT_INTERVAL = 45000;      // 45 sec
 
-// Time Based Schedule
-const WEEK_SCHEDULE = {
+// // Time Based Schedule
+// const WEEK_SCHEDULE = {
 
-    0: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
-    1: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
-    2: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
-    3: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
-    4: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
-    5: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
-    6: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } }
+//     0: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
+//     1: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
+//     2: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
+//     3: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
+//     4: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
+//     5: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } },
+//     6: { study: { hour: 0, minute: 0 }, coding: { hour: 0, minute: 0 } }
 
-};
+// };
 
 let waterInterval = null;
 let stretchInterval = null;
