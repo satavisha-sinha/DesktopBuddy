@@ -3,7 +3,7 @@ const REMINDERS = {
     water: {
         priority:2,
         sprite: "Assets/Water reminder.png",
-        message: "TIME TO DRINK WATER! 💧<br>STAY HYDRATED!",
+        message: "TIME TO DRINK WATER💧<br>STAY HYDRATED!",
         button1: "🥤 DRANK",
         button2: "⏰ SNOOZE",
         idleFrame: 1,
@@ -16,7 +16,7 @@ const REMINDERS = {
     sleep: {
         priority:1,
         sprite: "Assets/Sleep reminder.png",
-        message: "IT'S GETTING LATE 🌙<br>TIME TO SLEEP!",
+        message: "IT'S GETTING LATE🌙<br>TIME TO SLEEP!",
         button1: "😴 I'M OFF",
         button2: "⏰ SNOOZE",
         idleFrame: 1,
