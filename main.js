@@ -29,6 +29,13 @@ function createWindow() {
 
     win.loadFile("index.html");
 
+    const { width, height } = require("electron").screen.getPrimaryDisplay().workAreaSize;
+
+    win.setPosition(
+        width - 420,   
+        height - 450
+    );
+
 }
 
 app.whenReady().then(createWindow);
