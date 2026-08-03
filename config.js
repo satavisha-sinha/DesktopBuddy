@@ -10,7 +10,9 @@ const REMINDERS = {
         animationFrames: [2,3,2,3,4,5,5],
         frameDuration:350,
         showButtons: true,
-        snooze: 5 * 60 * 1000
+        // snooze: 5 * 60 * 1000
+        snooze: 5000
+
     },
 
     sleep: {
