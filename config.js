@@ -15,7 +15,7 @@ const REMINDERS = {
 
     },
 
-    sleep: {
+    sleep: {                                            
         priority:1,
         sprite: "Assets/Sleep reminder.png",
         message: "IT'S GETTING LATE🌙<br>TIME TO SLEEP!",

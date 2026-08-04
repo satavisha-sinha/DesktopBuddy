@@ -29,12 +29,13 @@
 
 /* Speech Bubble */
 .speech-bubble {
-    background-color: rgb(242, 221, 238);
+    background-color: rgb(240, 198, 232);
     padding: 10px;
-    border:1.5px solid black;
+    border:3px solid black;
     border-radius: 15px;
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     transform: translate(17px, -13px);
@@ -50,27 +51,30 @@
 }
 
 .button-container button {
-    padding: 8px 15px;
+    padding: 8px 12px;
     transform: translate(-5px, -5px);
     border-radius: 10px;
+    border:3px solid black;
     cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
+    font-weight: 700;
     transition: 0.3s;
     box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
 .button-container button:hover {
-    filter: brightness(1.05);
+    filter: brightness(1.25);
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 /* Button Colors */
 .drink-btn {
-    background-color: rgb(197, 218, 235);
+    background-color: rgb(104, 181, 243);
 }
 
 .snooze-btn {
-    background-color: rgb(241, 248, 224);
+    background-color: rgb(232, 230, 131);
 }
 
 /* Walk In Animation */
