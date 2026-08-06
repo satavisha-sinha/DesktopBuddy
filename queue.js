@@ -44,7 +44,7 @@ async function processQueue(){
 
     if(reminderQueue.length === 0) return;
 
-    // VERY IMPORTANT
+    
     setBuddyBusy(true);
 
     const reminder = getNextReminder();
