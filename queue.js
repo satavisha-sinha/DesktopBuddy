@@ -7,7 +7,6 @@ let buddyBusy = false;
 
 function queueReminder(reminder){
 
-    // Don't add if this reminder is already waiting
     if (reminderQueue.includes(reminder)) {
         console.log(`${reminder.message} is already in the queue.`);
         return;
