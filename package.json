@@ -4,7 +4,8 @@
   "description": "��#\u0000 \u0000D\u0000e\u0000s\u0000k\u0000t\u0000o\u0000p\u0000B\u0000u\u0000d\u0000d\u0000y\u0000\r\u0000 \u0000",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,20 @@
   "homepage": "https://github.com/satavisha-sinha/DesktopBuddy#readme",
   "devDependencies": {
     "electron": "^43.2.0"
+  },
+  "build": {
+  "appId": "com.desktopbuddy.app",
+  "productName": "DesktopBuddy",
+  "directories": {
+    "output": "dist"
+  },
+  "files": [
+    "**/*",
+    "!node_modules/.cache/**"
+  ],
+  "win": {
+    "target": "nsis",
+    "icon": "Assets/icon.ico"
   }
+}
 }
