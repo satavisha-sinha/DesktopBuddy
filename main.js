@@ -56,7 +56,7 @@ function createWindow() {
 
     win.loadFile("index.html");
 
-    tray = new Tray(path.join(__dirname, "Assets", "tray_icon.png"));
+    tray = new Tray(path.join(__dirname, "Assets", "icon.ico"));
 
     const contextMenu = Menu.buildFromTemplate([
         {
