@@ -1,7 +1,7 @@
 {
   "name": "desktopbuddy",
   "version": "1.0.0",
-  "description": "��#\u0000 \u0000D\u0000e\u0000s\u0000k\u0000t\u0000o\u0000p\u0000B\u0000u\u0000d\u0000d\u0000y\u0000\r\u0000 \u0000",
+  "description": "DesktopBuddy - A desktop reminder companion",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
