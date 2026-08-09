@@ -1,5 +1,13 @@
 node_modules/
+
 dist/
 build/
 release/
+
 *.exe
+*.zip
+
+.env
+
+.DS_Store
+desktop.ini
