@@ -20,21 +20,24 @@
   },
   "homepage": "https://github.com/satavisha-sinha/DesktopBuddy#readme",
   "devDependencies": {
-    "electron": "^43.2.0"
+    "electron": "^43.2.0",
+    "electron-builder": "^26.15.3"
   },
   "build": {
-  "appId": "com.desktopbuddy.app",
-  "productName": "DesktopBuddy",
-  "directories": {
-    "output": "dist"
-  },
-  "files": [
-    "**/*",
-    "!node_modules/.cache/**"
-  ],
-  "win": {
-    "target": "nsis",
-    "icon": "Assets/icon.ico"
+    "appId": "com.desktopbuddy.app",
+    "productName": "DesktopBuddy",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+        "**/*",
+        "!node_modules/.cache/**",
+        "!dist/**",
+        "!.git/**"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "Assets/icon.ico"
+    }
   }
-}
 }
