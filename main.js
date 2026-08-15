@@ -1,8 +1,14 @@
-const { app, BrowserWindow, Tray, Menu } = require("electron");
+const { app, BrowserWindow, Tray, Menu, ipcMain } = require("electron");
 const path = require("path");
 
 let win;
 let tray;
+
+ipcMain.on("show-buddy", () => {
+    if (win && !win.isDestroyed()) {
+        win.showInactive();
+    }
+});
 
 const gotTheLock = app.requestSingleInstanceLock();
 
