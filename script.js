@@ -1,3 +1,5 @@
+const { ipcRenderer } = require("electron");
+
 const characterContainer = document.querySelector(".character-container");
 const speechBubble = document.getElementById("speech-bubble");
 const buttonContainer = document.getElementById("button-container");
@@ -162,6 +164,10 @@ async function playReminder(reminder){
     loadReminder(currentReminder);
 
     console.log("2. reminder loaded")
+
+    ipcRenderer.send("show-buddy");
+
+    await new Promise(resolve => setTimeout(resolve, 100));
 
     walkIn();
 
