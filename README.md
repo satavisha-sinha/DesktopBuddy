@@ -137,25 +137,23 @@ Development Tools
 
 📁 Project Structure
 
-DesktopBuddy/
-│
-├── assets/
-│   ├── sprites/
-│   ├── animations/
-│   └── videos/
-│
-├── config.js
-├── animation.js
-├── scheduler.js
-├── scheduler_test.js
-├── script.js
-├── style.css
-├── index.html
-├── main.js
-├── package.json
-├── package-lock.json
-├── .gitignore
-└── README.md
+~DesktopBuddy
+    ~assets
+        ~sprites
+        ~animations
+        ~videos
+    ~config.js
+    ~animation.js
+    ~scheduler.js
+    ~scheduler_test.js
+    ~script.js
+    ~style.css
+    ~index.html
+    ~main.js
+    ~package.json
+    ~package-lock.json
+    ~.gitignore
+    ~README.md
 
 «The exact structure may change as the project develops.»
 
